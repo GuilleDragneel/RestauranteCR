@@ -1,7 +1,7 @@
 /*
 Autor= Guillermo Daniel Cruz Ortega
 Fecha creacion= 08/03/2022
-Fecha actualizacion= 08/03/2022
+Fecha actualizacion= 09/03/2022
 Descripcion= Paquete de base de datos
  */
 package bd;
@@ -26,19 +26,34 @@ public class Conexion {
     }
 
     public void Conectar() {
-
+        try {
+            getConecction();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
 
     public void Desconectar() {
-
+        try {
+            getConecction().close();
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
 
     public Connection getConecction() {
+        try {
+
+            Class.forName("org.postgresql.Drive");
+            conecction = DriverManager.getConnection("jdbc:postgresql://" + url + "/", user, pwd);
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
         return conecction;
     }
 
     public static void main(String[] args) {
-
+        Conexion con = new Conexion();
     }
 
 }
