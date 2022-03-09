@@ -28,6 +28,7 @@ public class Conexion {
     public void Conectar() {
         try {
             getConecction();
+            System.out.println("Conexion exitosa");
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
         }
@@ -36,6 +37,7 @@ public class Conexion {
     public void Desconectar() {
         try {
             getConecction().close();
+            System.out.println("Desconexion exitosa");
         } catch (Exception ex) {
             System.out.println("Error: " + ex.getMessage());
         }
